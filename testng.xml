@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Opencart Automation Suite">
+
+    <test name="Nouran Tests">
+        <classes>
+
+        </classes>
+    </test>
+
+    <test name="Maryhan Tests">
+        <classes>
+
+        </classes>
+    </test>
+
+    <test name="Arabi Tests">
+        <classes>
+
+        </classes>
+    </test>
+
+    <test name="Sobhy Tests">
+        <classes>
+
+        </classes>
+    </test>
+
+    <test name="Hazem Tests">
+        <classes>
+            <class name="Tests.CategoryTest"/>
+            <class name="Tests.AddToCartTest"/>
+
+        </classes>
+    </test>
+
+</suite>

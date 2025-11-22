@@ -32,19 +32,20 @@ public class HomePage extends BasePage {
     private final By searchButton = By.cssSelector("form.input-group button");
 
     // Desktops Category:
+    private final By desktopsDropdown = By.linkText("Desktops");
     private final By showAllDesktopsCategory = By.linkText("Show All Desktops");
 
     // First Product on Home page:
     private final By firstHomeProduct = By.cssSelector("#content > div.row > div:nth-child(1) > .product-thumb");
 
     // Add to Cart button for the first product on Home page:
-    private final By firstProductAddToCart = By.cssSelector("#content > div.row > div:nth-child(1) > div > div.content > form > div > button:nth-child(1)");
+    private final By featuredFirstProductAddToCart = By.cssSelector("#content > div.row > div:nth-child(1) > div > div.content > form > div > button:nth-child(1)");
 
     // Add to Wish List button for the first product on Home page:
-    private final By firstProductAddToWishList = By.cssSelector("#content > div.row > div:nth-child(1) > div > div.content > form > div > button:nth-child(2)");
+    private final By featuredFirstProductAddToWishList = By.cssSelector("#content > div.row > div:nth-child(1) > div > div.content > form > div > button:nth-child(2)");
 
     // Compare this snippet from src/main/java/Pages/BasePage.java:
-    private final By firstProductCompare = By.cssSelector("#content > div.row > div:nth-child(1) > div > div.content > form > div > button:nth-child(3)");
+    private final By featuredFirstProductCompare = By.cssSelector("#content > div.row > div:nth-child(1) > div > div.content > form > div > button:nth-child(3)");
 
     // =====================
     // Constructor
@@ -60,14 +61,17 @@ public class HomePage extends BasePage {
     public void openCurrencyMenu() {
         driver.findElement(currencyDropdown).click();
     }
+
     public void changeCurrencyToEuro() {
         openCurrencyMenu();
         driver.findElement(euroCurrencyOption).click();
     }
+
     public void changeCurrencyToGBP() {
         openCurrencyMenu();
         driver.findElement(gbpCurrencyOption).click();
     }
+
     public void changeCurrencyToUSD() {
         openCurrencyMenu();
         driver.findElement(usdCurrencyOption).click();
@@ -96,6 +100,7 @@ public class HomePage extends BasePage {
     }
 
     public void openAllDesktopsCategory() {
+        driver.findElement(desktopsDropdown).click();
         driver.findElement(showAllDesktopsCategory).click();
     }
 
@@ -106,15 +111,15 @@ public class HomePage extends BasePage {
     }
 
     public void addFirstProductToCart() {
-        driver.findElement(firstProductAddToCart).click();
+        driver.findElement(featuredFirstProductAddToCart).click();
     }
 
     public void addFirstProductToWishList() {
-        driver.findElement(firstProductAddToWishList).click();
+        driver.findElement(featuredFirstProductAddToWishList).click();
     }
 
     public void addFirstProductToCompare() {
-        driver.findElement(firstProductCompare).click();
+        driver.findElement(featuredFirstProductCompare).click();
     }
 
 }
