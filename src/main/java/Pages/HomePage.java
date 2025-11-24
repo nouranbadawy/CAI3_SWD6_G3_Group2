@@ -7,6 +7,8 @@ public class HomePage extends BasePage {
     // =====================
     // Locators
     // =====================
+
+    private final By logo = By.xpath("//header//img");
     // Currency Dropdown and its options:
     private final By currencyDropdown = By.cssSelector("#form-currency div.dropdown a.dropdown-toggle");
     private final By euroCurrencyOption = By.partialLinkText("Euro");
@@ -32,21 +34,21 @@ public class HomePage extends BasePage {
     private final By searchButton = By.cssSelector("form.input-group button");
 
     // Desktops Category:
-    private final By desktopsDropdown = By.linkText("Desktops");
     private final By showAllDesktopsCategory = By.linkText("Show All Desktops");
 
     // First Product on Home page:
     private final By firstHomeProduct = By.cssSelector("#content > div.row > div:nth-child(1) > .product-thumb");
 
     // Add to Cart button for the first product on Home page:
-    private final By featuredFirstProductAddToCart = By.cssSelector("#content > div.row > div:nth-child(1) > div > div.content > form > div > button:nth-child(1)");
+    private final By firstProductAddToCart = By.cssSelector("#content > div.row > div:nth-child(1) > div > div.content > form > div > button:nth-child(1)");
 
     // Add to Wish List button for the first product on Home page:
-    private final By featuredFirstProductAddToWishList = By.cssSelector("#content > div.row > div:nth-child(1) > div > div.content > form > div > button:nth-child(2)");
+    private final By firstProductAddToWishList = By.cssSelector("#content > div.row > div:nth-child(1) > div > div.content > form > div > button:nth-child(2)");
 
     // Compare this snippet from src/main/java/Pages/BasePage.java:
-    private final By featuredFirstProductCompare = By.cssSelector("#content > div.row > div:nth-child(1) > div > div.content > form > div > button:nth-child(3)");
-
+    private final By firstProductCompare = By.cssSelector("#content > div.row > div:nth-child(1) > div > div.content > form > div > button:nth-child(3)");
+    //Logout locator :
+    private final By logoutLink = By.linkText("Logout");
     // =====================
     // Constructor
     // =====================
@@ -58,20 +60,21 @@ public class HomePage extends BasePage {
     // Actions
     // =====================
 
+    public boolean isLogoDisplayed() {
+        return driver.findElement(logo).isDisplayed();
+    }
+
     public void openCurrencyMenu() {
         driver.findElement(currencyDropdown).click();
     }
-
     public void changeCurrencyToEuro() {
         openCurrencyMenu();
         driver.findElement(euroCurrencyOption).click();
     }
-
     public void changeCurrencyToGBP() {
         openCurrencyMenu();
         driver.findElement(gbpCurrencyOption).click();
     }
-
     public void changeCurrencyToUSD() {
         openCurrencyMenu();
         driver.findElement(usdCurrencyOption).click();
@@ -100,7 +103,6 @@ public class HomePage extends BasePage {
     }
 
     public void openAllDesktopsCategory() {
-        driver.findElement(desktopsDropdown).click();
         driver.findElement(showAllDesktopsCategory).click();
     }
 
@@ -109,17 +111,22 @@ public class HomePage extends BasePage {
         driver.findElement(searchInput).sendKeys(productName);
         driver.findElement(searchButton).click();
     }
+    // method for logout:
+    public void logout() {
+        driver.findElement(myAccountDropdown).click();
+        driver.findElement(logoutLink).click();
+    }
 
     public void addFirstProductToCart() {
-        driver.findElement(featuredFirstProductAddToCart).click();
+        driver.findElement(firstProductAddToCart).click();
     }
 
     public void addFirstProductToWishList() {
-        driver.findElement(featuredFirstProductAddToWishList).click();
+        driver.findElement(firstProductAddToWishList).click();
     }
 
     public void addFirstProductToCompare() {
-        driver.findElement(featuredFirstProductCompare).click();
+        driver.findElement(firstProductCompare).click();
     }
 
 }
