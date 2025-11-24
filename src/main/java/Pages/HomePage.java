@@ -7,7 +7,7 @@ public class HomePage extends BasePage {
     // =====================
     // Locators
     // =====================
-
+    //Fix logo :
     private final By logo = By.xpath("//header//img");
     // Currency Dropdown and its options:
     private final By currencyDropdown = By.cssSelector("#form-currency div.dropdown a.dropdown-toggle");
@@ -47,7 +47,7 @@ public class HomePage extends BasePage {
 
     // Compare this snippet from src/main/java/Pages/BasePage.java:
     private final By firstProductCompare = By.cssSelector("#content > div.row > div:nth-child(1) > div > div.content > form > div > button:nth-child(3)");
-    //Logout locator :
+    //Fix Logout locator :
     private final By logoutLink = By.linkText("Logout");
     // =====================
     // Constructor
@@ -59,7 +59,7 @@ public class HomePage extends BasePage {
     // =====================
     // Actions
     // =====================
-
+    //Fix Logo :
     public boolean isLogoDisplayed() {
         return driver.findElement(logo).isDisplayed();
     }
@@ -111,7 +111,7 @@ public class HomePage extends BasePage {
         driver.findElement(searchInput).sendKeys(productName);
         driver.findElement(searchButton).click();
     }
-    // method for logout:
+    // Fix method for logout:
     public void logout() {
         driver.findElement(myAccountDropdown).click();
         driver.findElement(logoutLink).click();
