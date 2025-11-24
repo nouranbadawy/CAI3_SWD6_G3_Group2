@@ -14,7 +14,7 @@ public class LoginPage extends BasePage {
     private final By emailInput = By.id("input-email");
     private final By passwordInput = By.id("input-password");
     private final By loginButton = By.xpath("//button[@type='submit' and contains(.,'Login')]");
-    // FIX: Changed from h2 to h1 for OpenCart 4.1.0.3
+    // FIX:
     private final By myAccountHeader = By.xpath("//div[@id='content']//h1[contains(text(),'My Account')]");
 
     // =====================
