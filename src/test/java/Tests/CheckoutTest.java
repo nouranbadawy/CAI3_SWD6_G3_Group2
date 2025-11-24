@@ -39,7 +39,7 @@ public class CheckoutTest {
         // Wait until Search Results page loads
         new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOfElementLocated(By.id("product-list")));
         // Add the product to the cart from Search Results page:
-        //! searchPage.addSearchedProductToCart();
+        searchPage.addSearchedProductToCart();
         // Open Checkout:
         homePage.openCheckout();
         // Fill-in checkout details as a guest:

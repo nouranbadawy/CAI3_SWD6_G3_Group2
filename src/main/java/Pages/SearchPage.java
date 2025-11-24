@@ -17,6 +17,9 @@ public class SearchPage extends BasePage {
                     "//div[@id='product-list']//h3/a | " +
                     "//div[contains(@class,'product-thumb')]//h4/a");
 
+    // Search Result (iPhone) Locator:
+    private final By searchProductAddToCartButton = By.xpath("//*[@id=\"product-list\"]/div/div/div[2]/form/div/button[1]");
+
     // =====================
     // Constructor
     // =====================
@@ -41,5 +44,10 @@ public class SearchPage extends BasePage {
         return driver.findElements(productNames)
                 .stream()
                 .anyMatch(p -> p.getText().toLowerCase().contains(productName.toLowerCase()));
+    }
+
+    // Add the searched product to cart:
+    public void addSearchedProductToCart() {
+        driver.findElement(searchProductAddToCartButton).click();
     }
 }
