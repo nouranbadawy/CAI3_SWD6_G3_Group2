@@ -34,6 +34,7 @@ public class HomePage extends BasePage {
     private final By searchButton = By.cssSelector("form.input-group button");
 
     // Desktops Category:
+    private final By desktopsMenu = By.linkText("Desktops");
     private final By showAllDesktopsCategory = By.linkText("Show All Desktops");
 
     // First Product on Home page:
@@ -103,6 +104,7 @@ public class HomePage extends BasePage {
     }
 
     public void openAllDesktopsCategory() {
+        driver.findElement(desktopsMenu).click();
         driver.findElement(showAllDesktopsCategory).click();
     }
 
