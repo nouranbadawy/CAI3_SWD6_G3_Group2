@@ -16,10 +16,8 @@ public class RegisterPage extends BasePage {
     By passwordField = By.id("input-password");
     By privacyCheckbox = By.name("agree");
 
-    // Updated Continue button locator
     By continueButton = By.cssSelector("button.btn.btn-primary");
 
-    // Error message locator
     By errorMessage = By.cssSelector("#content div.alert-danger");
 
     public RegisterPage(WebDriver driver) {
