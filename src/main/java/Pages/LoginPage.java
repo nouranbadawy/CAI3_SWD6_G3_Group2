@@ -47,4 +47,14 @@ public class LoginPage extends BasePage {
     public String getMyAccountHeaderText() {
         return driver.findElement(myAccountHeader).getText();
     }
+
+    public void login(String validEmail, String validPassword) {
+        enterEmail(validEmail);
+        enterPassword(validPassword);
+        clickLogin();
+    }
+
+    public String getWarningMessageText() {
+        return "";
+    }
 }
