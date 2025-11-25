@@ -15,8 +15,7 @@ public class CurrenciesPage extends BasePage {
     private final By priceElements = By.xpath(
             "//span[contains(@class,'price')] | " +
                     "//div[contains(@class,'float-end') and contains(@class,'price')] | " +
-                    "//strong[contains(text(),'€')]"
-    );
+                    "//strong[contains(text(),'€')]");
 
     // =====================
     // Constructor
