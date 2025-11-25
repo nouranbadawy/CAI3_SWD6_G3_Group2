@@ -16,6 +16,11 @@
 
     <test name="Arabi Tests">
         <classes>
+            <class name="Tests.TC_L01_LoginTest"/>
+            <class name="Tests.TC_L05_LogoutTest"/>
+            <class name="Tests.TC_S01_SearchTest"/>
+            <class name="Tests.TC_H01_HomepageTest"/>
+            <class name="Tests.TC_C01_CurrencyTest"/>
 
         </classes>
     </test>
@@ -30,6 +35,7 @@
         <classes>
             <class name="Tests.CategoryTest"/>
             <class name="Tests.AddToCartTest"/>
+            <class name="Tests.CheckoutTest"/>
 
         </classes>
     </test>
