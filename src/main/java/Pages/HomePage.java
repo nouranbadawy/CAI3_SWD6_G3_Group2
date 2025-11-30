@@ -2,6 +2,10 @@ package Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class HomePage extends BasePage {
     // =====================
@@ -14,42 +18,33 @@ public class HomePage extends BasePage {
     private final By euroCurrencyOption = By.partialLinkText("Euro");
     private final By gbpCurrencyOption = By.partialLinkText("Pound Sterling");
     private final By usdCurrencyOption = By.partialLinkText("US Dollar");
-
     // My Account Dropdown and its options:
     private final By myAccountDropdown = By.linkText("My Account");
     private final By loginLink = By.linkText("Login");
     private final By registerLink = By.linkText("Register");
-
     // Wish List Link:
     private final By wishListLink = By.id("wishlist-total");
-
     // Shopping Cart Link:
-    private final By shoppingCartLink = By.cssSelector("a[title=\"Shopping Cart\"]");
-
+    private final By shoppingCartLink = By.cssSelector("a[title*='Cart'], a[href*='route=checkout/cart']");
     // Checkout Link:
     private final By checkoutLink = By.cssSelector("a[title=\"Checkout\"]");
-
     // Search:
     private final By searchInput = By.cssSelector("input[name='search']");
     private final By searchButton = By.cssSelector("form.input-group button");
-
     // Desktops Category:
     private final By desktopsMenu = By.linkText("Desktops");
     private final By showAllDesktopsCategory = By.linkText("Show All Desktops");
-
     // First Product on Home page:
     private final By firstHomeProduct = By.cssSelector("#content > div.row > div:nth-child(1) > .product-thumb");
-
     // Add to Cart button for the first product on Home page:
-    private final By firstProductAddToCart = By.cssSelector("#content > div.row > div:nth-child(1) > div > div.content > form > div > button:nth-child(1)");
-
+    private final By firstProductAddToCart = By.xpath("//*[@id=\"content\"]/div[2]/div[1]/div/div[2]/form/div/button[1]");
     // Add to Wish List button for the first product on Home page:
     private final By firstProductAddToWishList = By.cssSelector("#content > div.row > div:nth-child(1) > div > div.content > form > div > button:nth-child(2)");
-
     // Compare this snippet from src/main/java/Pages/BasePage.java:
     private final By firstProductCompare = By.cssSelector("#content > div.row > div:nth-child(1) > div > div.content > form > div > button:nth-child(3)");
     //Fix Logout locator :
     private final By logoutLink = By.linkText("Logout");
+
     // =====================
     // Constructor
     // =====================
@@ -68,14 +63,17 @@ public class HomePage extends BasePage {
     public void openCurrencyMenu() {
         driver.findElement(currencyDropdown).click();
     }
+
     public void changeCurrencyToEuro() {
         openCurrencyMenu();
         driver.findElement(euroCurrencyOption).click();
     }
+
     public void changeCurrencyToGBP() {
         openCurrencyMenu();
         driver.findElement(gbpCurrencyOption).click();
     }
+
     public void changeCurrencyToUSD() {
         openCurrencyMenu();
         driver.findElement(usdCurrencyOption).click();
@@ -113,6 +111,7 @@ public class HomePage extends BasePage {
         driver.findElement(searchInput).sendKeys(productName);
         driver.findElement(searchButton).click();
     }
+
     // Fix method for logout:
     public void logout() {
         driver.findElement(myAccountDropdown).click();

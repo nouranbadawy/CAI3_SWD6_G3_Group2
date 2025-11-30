@@ -1,20 +1,20 @@
 package Tests;
 
+import Pages.CategoryPage;
+import Pages.HomePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-//import org.testng.annotations.AfterTest;
-
-import Pages.*;
 
 public class CategoryTest {
     WebDriver driver;
     HomePage homePage;
     CategoryPage categoryPage;
 
-    @BeforeTest
+    @BeforeMethod
     public void setup() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -31,8 +31,10 @@ public class CategoryTest {
     }
 
 
-//    @AfterTest
-//    public void tearDown() {
-//        driver.quit();
-//    }
+    @AfterMethod
+    public void tearDown() {
+        if (driver != null) {
+            driver.quit();
+        }
+    }
 }

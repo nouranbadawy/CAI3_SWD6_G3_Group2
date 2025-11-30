@@ -9,8 +9,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
@@ -21,7 +21,7 @@ public class CheckoutTest {
     CheckoutPage checkoutPage;
     SearchPage searchPage;
 
-    @BeforeTest
+    @BeforeMethod
     public void setup() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -37,7 +37,7 @@ public class CheckoutTest {
         // Search for a product and add it to the cart:
         homePage.searchForProduct("iPhone");
         // Wait until Search Results page loads
-        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOfElementLocated(By.id("product-list")));
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".product-thumb")));
         // Add the product to the cart from Search Results page:
         searchPage.addSearchedProductToCart();
         // Open Checkout:
@@ -48,7 +48,9 @@ public class CheckoutTest {
         checkoutPage.chooseShippingMethod();
         new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOfElementLocated(By.id("modal-shipping")));
         checkoutPage.selectShippingMethodOption();
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.invisibilityOfElementLocated(By.id("modal-shipping")));
         // Payment Methods:
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(By.id("button-payment-methods")));
         checkoutPage.choosePaymentMethod();
         new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOfElementLocated(By.id("modal-payment")));
         checkoutPage.selectPaymentMethodOption();
@@ -65,8 +67,10 @@ public class CheckoutTest {
         checkoutPage.clickOrderContinue();
     }
 
-    @AfterTest
+    @AfterMethod
     public void tearDown() {
-        driver.quit();
+        if (driver != null) {
+            driver.quit();
+        }
     }
 }
