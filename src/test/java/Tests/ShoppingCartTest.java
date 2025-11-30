@@ -26,35 +26,19 @@ public class ShoppingCartTest {
         shoppingCartPage = new ShoppingCartPage(driver);
         wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         js = (JavascriptExecutor) driver;
+        
     }
-
     @Test(description = "Verify MacBook appears in shopping cart after adding it")
     public void verifyProductAppearsInShoppingCart() {
 
         js.executeScript("window.scrollBy(0, 800);");
 
-        By addToCartLocator = By.xpath(
-                "//div[contains(@class,'product-thumb')]//a[text()='MacBook']/ancestor::div[contains(@class,'product-thumb')]//button[@aria-label='Add to Cart']"
-        );
+        By addToCartLocator = By.xpath("//*[@id='content']/div[2]/div[1]/div/div[2]/form/div/button[1]");
 
-        int attempts = 0;
-        boolean clicked = false;
+        WebElement addToCartBtn = wait.until(ExpectedConditions.elementToBeClickable(addToCartLocator));
 
-        while(attempts < 3 && !clicked) {
-            try {
-                WebElement addToCartBtn = wait.until(ExpectedConditions.elementToBeClickable(addToCartLocator));
-                js.executeScript("arguments[0].click();", addToCartBtn);
-                clicked = true;
-            } catch (TimeoutException | ElementClickInterceptedException e) {
-                System.out.println("Attempt " + (attempts + 1) + " failed, retrying...");
-                js.executeScript("window.scrollBy(0, 200);");
-                attempts++;
-            }
-        }
-
-        if(!clicked) {
-            Assert.fail("Could not click 'Add to Cart' button after 3 attempts!");
-        }
+        js.executeScript("arguments[0].scrollIntoView(true);", addToCartBtn);
+        js.executeScript("arguments[0].click();", addToCartBtn);
 
         By successAlert = By.cssSelector(".alert-success");
         wait.until(ExpectedConditions.visibilityOfElementLocated(successAlert));
@@ -66,11 +50,11 @@ public class ShoppingCartTest {
         ));
 
         String productName = shoppingCartPage.getProductNameFromCart();
-        Assert.assertEquals(productName, "MacBook", "The product added to shopping cart!");
-    }
 
+        Assert.assertEquals(productName, "MacBook",
+                "The product added to the shopping cart!");
+    }
     @AfterTest
     public void tearDown() {
-        driver.quit();
     }
 }
