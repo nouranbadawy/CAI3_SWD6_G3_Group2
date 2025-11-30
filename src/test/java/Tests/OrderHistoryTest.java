@@ -1,11 +1,13 @@
 package Tests;
 
-import Pages.*;
+import Pages.HomePage;
+import Pages.LoginPage;
+import Pages.OrderHistoryPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class OrderHistoryTest {
@@ -14,7 +16,7 @@ public class OrderHistoryTest {
     LoginPage loginPage;
     OrderHistoryPage orderHistoryPage;
 
-    @BeforeTest
+    @BeforeMethod
     public void setup() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -38,8 +40,10 @@ public class OrderHistoryTest {
         orderHistoryPage.viewOrderDetails();
     }
 
-    @AfterTest
+    @AfterMethod
     public void tearDown() {
-        driver.quit();
+        if (driver != null) {
+            driver.quit();
+        }
     }
 }
