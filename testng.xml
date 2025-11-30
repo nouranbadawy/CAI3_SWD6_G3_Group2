@@ -36,7 +36,7 @@
             <class name="Tests.CategoryTest"/>
             <class name="Tests.AddToCartTest"/>
             <class name="Tests.CheckoutTest"/>
-
+            <class name="Tests.OrderHistoryTest"/>
         </classes>
     </test>
 
