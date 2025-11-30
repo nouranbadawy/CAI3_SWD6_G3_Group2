@@ -31,11 +31,11 @@ public class SearchPage extends BasePage {
     // Actions
     // =====================
     public boolean isProductDisplayed(String productName) {
-        // Wait for search results to load
+        // Wait for search results to load.
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.presenceOfElementLocated(productNames));
 
-        // Fix: Print all found product names to console
+        // Fix: Print all found product names to console.
         System.out.println("Searching for: " + productName);
         driver.findElements(productNames).forEach(p ->
                 System.out.println("Found product: " + p.getText())

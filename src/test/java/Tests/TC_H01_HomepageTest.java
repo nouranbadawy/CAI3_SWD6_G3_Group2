@@ -39,7 +39,7 @@ public class TC_H01_HomepageTest {
                 "Homepage failed to load - Logo not displayed"
         );
 
-        // FIX: Add null check for title
+        // FIX: Add null check for title.
         String title = driver.getTitle();
         if (title == null) {
             Assert.fail("Page title is null - homepage failed to load");

@@ -29,7 +29,7 @@ public class TC_L05_LogoutTest {
             driver.quit();
         }
     }
-
+    //
     @Test(description = "TC-L05: Logout from user account")
     public void testLogout() {
         HomePage homePage = new HomePage(driver);

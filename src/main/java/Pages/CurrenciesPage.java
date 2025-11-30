@@ -11,7 +11,7 @@ public class CurrenciesPage extends BasePage {
     // =====================
     // Locators
     // =====================
-    // FIX: Check product prices AND header cart total
+    // FIX: Check product prices AND header cart total.
     private final By priceElements = By.xpath(
             "//span[contains(@class,'price')] | " +
                     "//div[contains(@class,'float-end') and contains(@class,'price')] | " +
@@ -28,7 +28,7 @@ public class CurrenciesPage extends BasePage {
     // Actions
     // =====================
     public boolean arePricesInCurrency(String currencySymbol) {
-        // Wait for currency change to take effect
+        // Wait for currency change to take effect.
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.jsReturnsValue(
                 "return document.readyState === 'complete'"

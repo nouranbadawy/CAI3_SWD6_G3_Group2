@@ -9,12 +9,12 @@ import java.time.Duration;
 public class LoginPage extends BasePage {
 
     // =====================
-    // Locators
+    // Locators.
     // =====================
     private final By emailInput = By.id("input-email");
     private final By passwordInput = By.id("input-password");
     private final By loginButton = By.xpath("//button[@type='submit' and contains(.,'Login')]");
-    // FIX:
+    // FIX.:
     private final By myAccountHeader = By.xpath("//div[@id='content']//h1[contains(text(),'My Account')]");
 
     // =====================
@@ -39,7 +39,7 @@ public class LoginPage extends BasePage {
 
     public void clickLogin() {
         driver.findElement(loginButton).click();
-        // Wait for My Account page to load
+        // Wait for My Account page to load.
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.presenceOfElementLocated(myAccountHeader));
     }
