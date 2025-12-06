@@ -3,7 +3,8 @@
 <suite name="Opencart Automation Suite">
     <test name="Nouran Tests">
         <classes>
-
+            <class name="Tests.RegisterTest"/>
+            <class name="Tests.ShoppingCartTest"/>
         </classes>
     </test>
     <test name="Maryhan Tests">
